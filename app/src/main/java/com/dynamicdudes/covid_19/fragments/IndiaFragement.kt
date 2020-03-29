@@ -10,7 +10,6 @@ import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
 import com.dynamicdudes.covid_19.R
 import com.dynamicdudes.covid_19.callbacks.ApiService
-import com.dynamicdudes.covid_19.data.Covid
 import com.dynamicdudes.covid_19.data.Coviddata
 import kotlinx.android.synthetic.main.fragement_india.*
 import retrofit2.Call

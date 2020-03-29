@@ -1,64 +1,35 @@
 package com.dynamicdudes.covid_19
 
-import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log.d
-import android.widget.Toast
 import androidx.fragment.app.Fragment
-import com.dynamicdudes.covid_19.callbacks.ApiService
-import com.dynamicdudes.covid_19.data.Covid
-import com.dynamicdudes.covid_19.data.Coviddata
-import com.dynamicdudes.covid_19.fragments.FragmentAboutus
-import com.dynamicdudes.covid_19.fragments.FragmentOther
+import com.dynamicdudes.covid_19.fragments.AboutUsFragment
+import com.dynamicdudes.covid_19.fragments.OtherFragment
 import com.dynamicdudes.covid_19.fragments.IndiaFragement
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_main.*
-import retrofit2.*
-import retrofit2.converter.gson.GsonConverterFactory
 
 class MainActivity : AppCompatActivity() {
-    val TAG = "MainActivity"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         val indiaFragment = IndiaFragement()
         setCurrentfragment(indiaFragment)
-        //initApiCalls()
         bottom_nav.setOnNavigationItemSelectedListener {
             when(it.itemId){
                 R.id.home_menu -> {
                     setCurrentfragment(indiaFragment)
                 }
                 R.id.check -> {
-                    val fragmentOther = FragmentOther()
+                    val fragmentOther = OtherFragment()
                     setCurrentfragment(fragmentOther)
                 }
                 R.id.about -> {
-                    val fragmentAboutus = FragmentAboutus()
+                    val fragmentAboutus = AboutUsFragment()
                     setCurrentfragment(fragmentAboutus)
                 }
             }
             true
         }
-    }
-
-    fun initApiCalls(){
-        val retrofit = Retrofit.Builder()
-            .baseUrl("https://corona.lmao.ninja")
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
-        val api = retrofit.create(ApiService::class.java)
-        api.fetchAllDetails("india").enqueue(object : Callback<Coviddata>{
-            override fun onFailure(call: Call<Coviddata>, t: Throwable) {
-                d(TAG,"${t.message} because of ${t.cause}")
-            }
-            override fun onResponse(call: Call<Coviddata>, response: Response<Coviddata>) {
-                if(response.isSuccessful){
-                    d(TAG,"Fetched Successfully....Cases: ${response.body()!!.cases}")
-                }
-            }
-        })
     }
 
     fun setCurrentfragment(fragment: Fragment){
