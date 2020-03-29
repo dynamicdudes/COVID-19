@@ -1,4 +1,4 @@
-package com.dynamicdudes.covid_19
+package com.dynamicdudes.covid_19.data
 
 data class Covid(
     val countryFlag : String,
