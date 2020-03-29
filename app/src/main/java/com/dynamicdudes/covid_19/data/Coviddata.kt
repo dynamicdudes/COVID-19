@@ -26,5 +26,7 @@ import com.google.gson.annotations.SerializedName
         @SerializedName("todayCases")
         val todayCases: Int,
         @SerializedName("todayDeaths")
-        val todayDeaths: Int
+        val todayDeaths: Int,
+        @SerializedName("updated")
+        val updated : Long
     )

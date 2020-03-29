@@ -42,10 +42,23 @@ class IndiaFragement : Fragment(R.layout.fragement_india){
                 if(response.isSuccessful){
                     d(TAG, "Fetched Successfully....Cases: ${response.body()!!.cases}")
                     val flagURL = response.body()!!.countryInfo.flag
+                    val responseJson = response.body()!!
                     d(TAG,"Flag url $flagURL")
                     Glide.with(activity!!)
                         .load(Uri.parse(flagURL))
                         .into(country_flag_def)
+                    country_name_def.text = responseJson.country
+                    //("Substring the Update date for proper format")
+                    update_date_def.text = "Last update Date : \n ${responseJson.updated}"
+                    total_cases_def.text = "Total cases Count : ${responseJson.cases}"
+                    today_cases_def.text = "Today's cases Count : ${responseJson.todayCases}"
+                    total_death_def.text = "Total Death Count : ${responseJson.deaths}"
+                    today_death_def.text = "Today Death Count : ${responseJson.todayDeaths}"
+                    total_recovered_def.text = "Total Recovered Cases : ${responseJson.recovered}"
+                    active_def.text = "Still Active cases : ${responseJson.active}"
+                    critical_def.text = "Total Critical cases :${responseJson.critical}"
+                    total_casesp_m_def.text = "Cases Per One Million : ${responseJson.casesPerOneMillion}"
+                    total_deathp_m_def.text = "Death Per One Million : ${responseJson.deathsPerOneMillion}"
                 }
             }
         })
