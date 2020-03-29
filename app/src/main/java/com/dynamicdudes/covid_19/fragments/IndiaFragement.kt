@@ -22,6 +22,11 @@ class IndiaFragement : Fragment(R.layout.fragement_india){
     val TAG = "IndiaFragment"
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        country_name_def.visibility = View.INVISIBLE
+        country_flag_def.visibility = View.INVISIBLE
+        update_date_def.visibility = View.INVISIBLE
+        scrollview_def.visibility = View.INVISIBLE
+        progress_def.visibility = View.VISIBLE
         initApiCalls()
 
     }
@@ -58,6 +63,12 @@ class IndiaFragement : Fragment(R.layout.fragement_india){
                     critical_def.text = "Total Critical cases :${responseJson.critical}"
                     total_casesp_m_def.text = "Cases Per One Million : ${responseJson.casesPerOneMillion}"
                     total_deathp_m_def.text = "Death Per One Million : ${responseJson.deathsPerOneMillion}"
+                    // making views visible
+                    progress_def.visibility = View.INVISIBLE
+                    country_name_def.visibility = View.VISIBLE
+                    country_flag_def.visibility = View.VISIBLE
+                    update_date_def.visibility = View.VISIBLE
+                    scrollview_def.visibility = View.VISIBLE
                 }
             }
         })
