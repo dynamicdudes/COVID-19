@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.dynamicdudes.covid_19.callbacks.ApiService
 import com.dynamicdudes.covid_19.data.Covid
+import com.dynamicdudes.covid_19.data.Coviddata
 import com.dynamicdudes.covid_19.fragments.FragmentAboutus
 import com.dynamicdudes.covid_19.fragments.FragmentOther
 import com.dynamicdudes.covid_19.fragments.IndiaFragement
@@ -23,7 +24,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         val indiaFragment = IndiaFragement()
         setCurrentfragment(indiaFragment)
-        initApiCalls()
+        //initApiCalls()
         bottom_nav.setOnNavigationItemSelectedListener {
             when(it.itemId){
                 R.id.home_menu -> {
@@ -48,13 +49,14 @@ class MainActivity : AppCompatActivity() {
             .addConverterFactory(GsonConverterFactory.create())
             .build()
         val api = retrofit.create(ApiService::class.java)
-        api.fetchAllDetails().enqueue(object : Callback<Covid>{
-            override fun onFailure(call: Call<Covid>, t: Throwable) {
-                println("Failed to Fetch...")
+        api.fetchAllDetails("india").enqueue(object : Callback<Coviddata>{
+            override fun onFailure(call: Call<Coviddata>, t: Throwable) {
                 d(TAG,"${t.message} because of ${t.cause}")
             }
-            override fun onResponse(call: Call<Covid>, response: Response<Covid>) {
-                println("Fetched Successfully....Cases: ${response.body()!!.cases}")
+            override fun onResponse(call: Call<Coviddata>, response: Response<Coviddata>) {
+                if(response.isSuccessful){
+                    d(TAG,"Fetched Successfully....Cases: ${response.body()!!.cases}")
+                }
             }
         })
     }
