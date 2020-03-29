@@ -40,7 +40,7 @@ class IndiaFragement : Fragment(R.layout.fragement_india){
         api.fetchAllDetails("india").enqueue(object : Callback<Coviddata> {
             override fun onFailure(call: Call<Coviddata>, t: Throwable) {
                 println("Failed to Fetch...")
-                Log.d(TAG, "${t.message} because of ${t.cause}")
+                d(TAG, "${t.message} because of ${t.cause}")
             }
             override fun onResponse(call: Call<Coviddata>, response: Response<Coviddata>) {
                 if(response.isSuccessful){
