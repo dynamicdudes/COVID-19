@@ -10,6 +10,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.dynamicdudes.covid_19.R
 import com.dynamicdudes.covid_19.data.all_countries
+import com.google.android.material.snackbar.Snackbar
+
 
 class CountriesRecyclerAdapter(val listOfCountries : all_countries) : RecyclerView.Adapter<CountriesRecyclerAdapter.CountriesviewHolder>(){
 
@@ -19,9 +21,10 @@ class CountriesRecyclerAdapter(val listOfCountries : all_countries) : RecyclerVi
         val countryNameText = itemView.findViewById<TextView>(R.id.country_name_rc_item)
         val countryCasesText = itemView.findViewById<TextView>(R.id.country_cases_rc_item)
         val countryDeathText = itemView.findViewById<TextView>(R.id.country_death_rc_item)
-
     }
-
+    interface OnRecyclerListner {
+        fun onCountrySelected(country: String)
+    }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CountriesviewHolder {
         val view:View = LayoutInflater.from(parent.context).inflate(R.layout.recycle_view_item,parent,false)
         return CountriesviewHolder(view)
@@ -37,10 +40,13 @@ class CountriesRecyclerAdapter(val listOfCountries : all_countries) : RecyclerVi
         Glide.with(holder.itemView.context)
             .load(flagUrl)
             .into(holder.countryFlagImage)
-        holder.countryCasesText.text = listOfCountries[position].cases.toString()
-        holder.countryDeathText.text = listOfCountries[position].cases.toString()
+        holder.countryCasesText.text = "Cases : ${listOfCountries[position].cases}"
+        holder.countryDeathText.text = "Deaths : ${listOfCountries[position].deaths}"
         holder.countryBlock.setOnClickListener {
-            
+            Snackbar.make(holder.itemView,"you pressed ${listOfCountries[position].country} country",Snackbar.LENGTH_SHORT).show()
+            holder.itemView
         }
+
     }
+
 }

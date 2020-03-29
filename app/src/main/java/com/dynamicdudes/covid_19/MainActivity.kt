@@ -9,6 +9,7 @@ import com.dynamicdudes.covid_19.fragments.IndiaFragement
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -30,7 +31,9 @@ class MainActivity : AppCompatActivity() {
             }
             true
         }
+
     }
+
 
     fun setCurrentfragment(fragment: Fragment){
         supportFragmentManager.beginTransaction().apply {
@@ -38,4 +41,11 @@ class MainActivity : AppCompatActivity() {
             commit()
         }
     }
+/*
+* country = availableCountry.countryName
+        val detailsFragment = DetailsFragment()
+        val bundle = Bundle()
+        bundle.putString("country", country)
+*
+* */
 }

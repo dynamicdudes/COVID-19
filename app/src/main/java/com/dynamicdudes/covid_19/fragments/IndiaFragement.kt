@@ -2,10 +2,12 @@ package com.dynamicdudes.covid_19.fragments
 
 
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.util.Log.d
 import android.view.View
+import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
 import com.dynamicdudes.covid_19.R
@@ -42,6 +44,7 @@ class IndiaFragement : Fragment(R.layout.fragement_india){
                 println("Failed to Fetch...")
                 d(TAG, "${t.message} because of ${t.cause}")
             }
+
             override fun onResponse(call: Call<Coviddata>, response: Response<Coviddata>) {
                 if(response.isSuccessful){
                     d(TAG, "Fetched Successfully....Cases: ${response.body()!!.cases}")
@@ -53,7 +56,11 @@ class IndiaFragement : Fragment(R.layout.fragement_india){
                         .into(country_flag_def)
                     country_name_def.text = responseJson.country
                     //("Substring the Update date for proper format")
-                    update_date_def.text = "Last update Date : \n ${responseJson.updated}"
+                    val date = responseJson.updated
+                    val sdf = java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'")
+                    val dates = java.util.Date(date * 1000)
+                    val updated =  sdf.format(dates)
+                    update_date_def.text = "Last update Date : \n ${updated}"
                     total_cases_def.text = "Total cases Count : ${responseJson.cases}"
                     today_cases_def.text = "Today's cases Count : ${responseJson.todayCases}"
                     total_death_def.text = "Total Death Count : ${responseJson.deaths}"
