@@ -3,9 +3,9 @@ package com.dynamicdudes.covid_19
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import com.dynamicdudes.covid_19.fragments.AboutUsFragment
 import com.dynamicdudes.covid_19.fragments.OtherFragment
 import com.dynamicdudes.covid_19.fragments.IndiaFragement
+import com.dynamicdudes.covid_19.fragments.SettingsFragment
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -25,15 +25,13 @@ class MainActivity : AppCompatActivity() {
                     setCurrentfragment(fragmentOther)
                 }
                 R.id.about -> {
-                    val fragmentAboutus = AboutUsFragment()
-                    setCurrentfragment(fragmentAboutus)
+                    val settingsFragment = SettingsFragment()
+                    setCurrentfragment(settingsFragment)
                 }
             }
             true
         }
-
     }
-
 
     fun setCurrentfragment(fragment: Fragment){
         supportFragmentManager.beginTransaction().apply {
@@ -41,11 +39,5 @@ class MainActivity : AppCompatActivity() {
             commit()
         }
     }
-/*
-* country = availableCountry.countryName
-        val detailsFragment = DetailsFragment()
-        val bundle = Bundle()
-        bundle.putString("country", country)
-*
-* */
+
 }

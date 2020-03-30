@@ -48,7 +48,7 @@ class DetailsFragment : Fragment(R.layout.fragment_details){
                     .setTitle("Failed to Fetch")
                     .setTitle("Unable to fetch the Data , check if there is active internet connection. if the problem still persist contact us")
                     .setIcon(R.drawable.ic_error_outline_black_24dp)
-                    .setNegativeButton("Okay", DialogInterface.OnClickListener { dialog, which ->
+                    .setNegativeButton("Okay", DialogInterface.OnClickListener { dialog, _ ->
                         dialog.dismiss()
                     })
                     .show()

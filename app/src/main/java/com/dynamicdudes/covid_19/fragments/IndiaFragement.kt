@@ -53,7 +53,7 @@ class IndiaFragement : Fragment(R.layout.fragement_india){
                     val flagURL = response.body()!!.countryInfo.flag
                     val responseJson = response.body()!!
                     d(TAG,"Flag url $flagURL")
-                    Glide.with(activity!!)
+                    Glide.with(this@IndiaFragement)
                         .load(Uri.parse(flagURL))
                         .into(country_flag_def)
                     country_name_def.text = responseJson.country

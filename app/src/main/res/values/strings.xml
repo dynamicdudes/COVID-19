@@ -2,4 +2,6 @@
     <string name="app_name">COVID-19</string>
     <string name="country_def">India</string>
     <string name="country_image">Country Image</string>
+    <string name="country">country</string>
+    <string name="choose_default_theme_for_app">Choose Default Theme for App</string>
 </resources>

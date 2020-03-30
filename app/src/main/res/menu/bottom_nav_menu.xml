@@ -12,7 +12,7 @@
     />
 <item
     android:id="@+id/about"
-    android:title="About us"
-    android:icon="@drawable/ic_account_circle_black_24dp"
+    android:title="Settings"
+    android:icon="@drawable/ic_settings_black_24dp"
     />
 </menu>
