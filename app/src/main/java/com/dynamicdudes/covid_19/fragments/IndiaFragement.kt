@@ -19,6 +19,8 @@ import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import java.text.SimpleDateFormat
+import java.util.*
 
 class IndiaFragement : Fragment(R.layout.fragement_india){
     val TAG = "IndiaFragment"
@@ -56,11 +58,9 @@ class IndiaFragement : Fragment(R.layout.fragement_india){
                         .into(country_flag_def)
                     country_name_def.text = responseJson.country
                     //("Substring the Update date for proper format")
-                    val date = responseJson.updated
-                    val sdf = java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'")
-                    val dates = java.util.Date(date * 1000)
-                    val updated =  sdf.format(dates)
-                    update_date_def.text = "Last update Date : \n ${updated}"
+                    val date = SimpleDateFormat("MM/dd/yyyy HH:mm:ss")
+                        .format(Date(responseJson.updated * 1000))
+                    update_date_def.text = "Last update Date : \n ${date}"
                     total_cases_def.text = "Total cases Count : ${responseJson.cases}"
                     today_cases_def.text = "Today's cases Count : ${responseJson.todayCases}"
                     total_death_def.text = "Total Death Count : ${responseJson.deaths}"

@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.dynamicdudes.covid_19.R
 import com.dynamicdudes.covid_19.adapters.CountriesRecyclerAdapter
 import com.dynamicdudes.covid_19.callbacks.ApiService
+import com.dynamicdudes.covid_19.callbacks.FragmentCommunication
 import com.dynamicdudes.covid_19.data.all_countries
 import kotlinx.android.synthetic.main.fragment_other.*
 import retrofit2.*
@@ -48,9 +49,20 @@ class OtherFragment : Fragment(R.layout.fragment_other){
                     })
                     .show()
             }
-
+            val communication = object : FragmentCommunication {
+                override fun respond(countryname: String) {
+                    val DetailsFragment = DetailsFragment()
+                    val bundle = Bundle()
+                    bundle.putString("country",countryname)
+                    DetailsFragment.arguments = bundle
+                    fragmentManager!!.beginTransaction().apply {
+                        replace(R.id.frame_layout_main,DetailsFragment)
+                        commit()
+                    }
+                }
+            }
             override fun onResponse(call: Call<all_countries>, response: Response<all_countries>) {
-                val countryRecyclerAdapter = CountriesRecyclerAdapter(response.body()!!)
+                val countryRecyclerAdapter = CountriesRecyclerAdapter(response.body()!!,communication)
                 countries_rc_view.adapter = countryRecyclerAdapter
                 countries_rc_view.layoutManager = LinearLayoutManager(activity!!)
                 progressBar_details.visibility = View.INVISIBLE
