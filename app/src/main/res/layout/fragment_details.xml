@@ -64,13 +64,15 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="10dp"
+                        android:textStyle="bold"
+                        android:textColor="#2962FF"
                         android:text="Cases" />
 
                     <TextView
                         android:id="@+id/total_cases_details"
                         style="@style/dataTextStyle"
                         android:text="@string/app_name"
-                        android:textColor="#000" />
+                         />
 
                     <TextView
                         android:id="@+id/today_cases_details"
@@ -94,6 +96,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="10dp"
+                        android:textStyle="bold"
                         android:textColor="#f00"
                         android:text="Deaths" />
 
@@ -126,6 +129,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="10dp"
+                        android:textStyle="bold"
                         android:textColor="#00C853"
                         android:text="Recovery" />
 
@@ -133,7 +137,7 @@
                         android:id="@+id/total_recovered_details"
                         style="@style/dataTextStyle"
                         android:text="@string/app_name"
-                        android:textColor="#000" />
+                         />
 
                     <TextView
                         android:id="@+id/active_details"
@@ -163,6 +167,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="10dp"
+                        android:textStyle="bold"
                         android:textColor="#AA00FF"
                         android:text="Misc. " />
                     <!-- Cases Per One Million -->
@@ -170,7 +175,7 @@
                         android:id="@+id/total_casesp_m_details"
                         style="@style/dataTextStyle"
                         android:text="@string/app_name"
-                        android:textColor="#000" />
+                         />
                     <!-- Cases Per One Million -->
                     <TextView
                         android:id="@+id/total_deathp_m_details"
