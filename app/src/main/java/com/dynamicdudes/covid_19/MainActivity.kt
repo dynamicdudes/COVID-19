@@ -1,7 +1,10 @@
 package com.dynamicdudes.covid_19
 
+import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import android.view.MenuItem
 import androidx.fragment.app.Fragment
 import com.dynamicdudes.covid_19.fragments.OtherFragment
 import com.dynamicdudes.covid_19.fragments.IndiaFragement
@@ -9,16 +12,15 @@ import com.dynamicdudes.covid_19.fragments.SettingsFragment
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
-
+private var isFragmentAttached = false
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        val indiaFragment = IndiaFragement()
-        setCurrentfragment(indiaFragment)
         bottom_nav.setOnNavigationItemSelectedListener {
             when(it.itemId){
                 R.id.home_menu -> {
-                    setCurrentfragment(indiaFragment)
+                    val fragment = IndiaFragement()
+                    setCurrentfragment(fragment)
                 }
                 R.id.check -> {
                     val fragmentOther = OtherFragment()
@@ -28,9 +30,17 @@ class MainActivity : AppCompatActivity() {
                     val settingsFragment = SettingsFragment()
                     setCurrentfragment(settingsFragment)
                 }
+                else -> {
+                    val fragment = IndiaFragement()
+                    setCurrentfragment(fragment)
+                }
             }
             true
         }
+        if (!isFragmentAttached){
+            bottom_nav.selectedItemId = R.id.home_menu
+        }
+        //bottom_nav.selectedItemId = R.id.home_menu
     }
 
     fun setCurrentfragment(fragment: Fragment){
@@ -40,4 +50,8 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    override fun onAttachFragment(fragment: Fragment) {
+        super.onAttachFragment(fragment)
+        isFragmentAttached = true
+    }
 }

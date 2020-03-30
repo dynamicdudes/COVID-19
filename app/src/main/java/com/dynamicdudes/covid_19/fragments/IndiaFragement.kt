@@ -2,12 +2,9 @@ package com.dynamicdudes.covid_19.fragments
 
 
 import android.net.Uri
-import android.os.Build
 import android.os.Bundle
-import android.util.Log
 import android.util.Log.d
 import android.view.View
-import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
 import com.dynamicdudes.covid_19.R
@@ -31,11 +28,11 @@ class IndiaFragement : Fragment(R.layout.fragement_india){
         update_date_def.visibility = View.INVISIBLE
         scrollview_def.visibility = View.INVISIBLE
         progress_def.visibility = View.VISIBLE
-        initApiCalls()
+        initApiCalls(view)
 
     }
 
-    fun initApiCalls(){
+    fun initApiCalls(view: View) {
         val retrofit = Retrofit.Builder()
             .baseUrl("https://corona.lmao.ninja")
             .addConverterFactory(GsonConverterFactory.create())
@@ -53,7 +50,7 @@ class IndiaFragement : Fragment(R.layout.fragement_india){
                     val flagURL = response.body()!!.countryInfo.flag
                     val responseJson = response.body()!!
                     d(TAG,"Flag url $flagURL")
-                    Glide.with(this@IndiaFragement)
+                    Glide.with(view)
                         .load(Uri.parse(flagURL))
                         .into(country_flag_def)
                     country_name_def.text = responseJson.country

@@ -4,4 +4,5 @@
     <string name="country_image">Country Image</string>
     <string name="country">country</string>
     <string name="choose_default_theme_for_app">Choose Default Theme for App</string>
+    <string name="select_country">Select Country</string>
 </resources>
