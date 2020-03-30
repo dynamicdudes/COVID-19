@@ -43,7 +43,6 @@ class CountriesRecyclerAdapter(val listOfCountries : all_countries,communication
         holder.countryCasesText.text = "Cases : ${listOfCountries[position].cases}"
         holder.countryDeathText.text = "Deaths : ${listOfCountries[position].deaths}"
         holder.countryBlock.setOnClickListener {
-            Snackbar.make(holder.itemView,"you pressed ${listOfCountries[position].country} country",Snackbar.LENGTH_SHORT).show()
             holder.communications.respond(listOfCountries[position].country)
         }
 

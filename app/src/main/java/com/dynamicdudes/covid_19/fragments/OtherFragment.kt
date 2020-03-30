@@ -57,6 +57,7 @@ class OtherFragment : Fragment(R.layout.fragment_other){
                     DetailsFragment.arguments = bundle
                     fragmentManager!!.beginTransaction().apply {
                         replace(R.id.frame_layout_main,DetailsFragment)
+                        addToBackStack(null)
                         commit()
                     }
                 }
