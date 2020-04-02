@@ -11,15 +11,16 @@
         android:id="@+id/country_name_def"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="56dp"
         android:fontFamily="@font/montserrat"
         android:text="@string/country"
         android:textSize="30sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.746"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintHorizontal_bias="0.393"
+        app:layout_constraintStart_toEndOf="@+id/country_flag_def"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.068" />
+        tools:text="India" />
 
     <ImageView
         android:id="@+id/country_flag_def"
@@ -41,6 +42,7 @@
         android:layout_marginStart="1dp"
         android:layout_marginEnd="1dp"
         android:layout_marginBottom="1dp"
+        android:fadeScrollbars="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -80,6 +82,13 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/app_name" />
+
+                    <ProgressBar
+                        android:id="@+id/progress_def"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:indeterminateOnly="true"
+                        android:visibility="invisible" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
@@ -192,18 +201,14 @@
         android:id="@+id/update_date_def"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
         android:text="Last Update Date"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toTopOf="@+id/scrollview_def"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.761"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.15" />
+        app:layout_constraintHorizontal_bias="0.385"
+        app:layout_constraintStart_toEndOf="@+id/country_flag_def"
+        app:layout_constraintTop_toBottomOf="@+id/country_name_def"
+        app:layout_constraintVertical_bias="0.357" />
 
-<ProgressBar
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:indeterminateOnly="true"
-    android:visibility="invisible"
-    android:id="@+id/progress_def"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

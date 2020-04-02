@@ -10,15 +10,15 @@
         android:id="@+id/country_name_details"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
         android:fontFamily="@font/montserrat"
         android:text="country"
         android:textSize="30sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.746"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.068" />
+        app:layout_constraintHorizontal_bias="0.403"
+        app:layout_constraintStart_toEndOf="@+id/country_flag_details"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/country_flag_details"
@@ -64,15 +64,14 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="10dp"
-                        android:textStyle="bold"
+                        android:text="Cases"
                         android:textColor="#2962FF"
-                        android:text="Cases" />
+                        android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/total_cases_details"
                         style="@style/dataTextStyle"
-                        android:text="@string/app_name"
-                         />
+                        android:text="@string/app_name" />
 
                     <TextView
                         android:id="@+id/today_cases_details"
@@ -96,23 +95,21 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="10dp"
-                        android:textStyle="bold"
+                        android:text="Deaths"
                         android:textColor="#f00"
-                        android:text="Deaths" />
+                        android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/total_death_details"
                         style="@style/dataTextStyle"
-                        android:text="@string/app_name"
-                        />
+                        android:text="@string/app_name" />
 
                     <TextView
                         android:id="@+id/today_death_details"
                         style="@style/dataTextStyle"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@string/app_name"
-                        />
+                        android:text="@string/app_name" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
@@ -129,15 +126,14 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="10dp"
-                        android:textStyle="bold"
+                        android:text="Recovery"
                         android:textColor="#00C853"
-                        android:text="Recovery" />
+                        android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/total_recovered_details"
                         style="@style/dataTextStyle"
-                        android:text="@string/app_name"
-                         />
+                        android:text="@string/app_name" />
 
                     <TextView
                         android:id="@+id/active_details"
@@ -145,6 +141,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/app_name" />
+
                     <TextView
                         android:id="@+id/critical_details"
                         style="@style/dataTextStyle"
@@ -167,15 +164,14 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="10dp"
-                        android:textStyle="bold"
+                        android:text="Misc. "
                         android:textColor="#AA00FF"
-                        android:text="Misc. " />
+                        android:textStyle="bold" />
                     <!-- Cases Per One Million -->
                     <TextView
                         android:id="@+id/total_casesp_m_details"
                         style="@style/dataTextStyle"
-                        android:text="@string/app_name"
-                         />
+                        android:text="@string/app_name" />
                     <!-- Cases Per One Million -->
                     <TextView
                         android:id="@+id/total_deathp_m_details"
@@ -193,12 +189,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Last Update Date"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toTopOf="@+id/scrollview_details"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.761"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.15" />
+        app:layout_constraintHorizontal_bias="0.42"
+        app:layout_constraintStart_toEndOf="@+id/country_flag_details"
+        app:layout_constraintTop_toBottomOf="@+id/country_name_details"
+        app:layout_constraintVertical_bias="0.16" />
+
     <ProgressBar
         android:layout_width="match_parent"
         android:layout_height="match_parent"

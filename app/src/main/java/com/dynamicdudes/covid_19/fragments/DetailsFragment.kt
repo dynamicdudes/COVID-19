@@ -60,9 +60,14 @@ class DetailsFragment : Fragment(R.layout.fragment_details){
                 Glide.with(activity!!)
                     .load(responseJson.countryInfo.flag)
                     .into(country_flag_details)
-                val date = SimpleDateFormat("MM/dd/yyyy HH:mm:ss")
-                    .format(Date(responseJson.updated * 1000))
-                update_date_details.text = "Last updated \n $date"
+                val time = Calendar.getInstance()
+                time.add(Calendar.MILLISECOND,time.timeZone.getOffset(responseJson.updated))
+                val update = time.time
+                val stringTime = update.toString().subSequence(0,update.toString().indexOf(" GMT"))
+
+//                val date = SimpleDateFormat("MM/dd/yyyy HH:mm:ss")
+//                    .format(Date(responseJson.updated * 1000))
+                update_date_details.text = "Last updated\n$stringTime"
                 total_cases_details.text = "Total cases Count : ${responseJson.cases}"
                 today_cases_details.text = "Today's cases Count : ${responseJson.todayCases}"
                 total_death_details.text = "Total Death Count : ${responseJson.deaths}"

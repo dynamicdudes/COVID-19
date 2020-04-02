@@ -93,7 +93,7 @@ class IndiaFragement : Fragment(R.layout.fragement_india){
                     time.add(Calendar.MILLISECOND,time.timeZone.getOffset(responseJson.updated))
                     val udate = time.time
                     val stringTime = udate.toString().subSequence(0,udate.toString().indexOf(" GMT"))
-                    updateDate.text = "Last updated \n $stringTime"
+                    updateDate.text = "Last updated\n$stringTime"
                     totalCases.text = "Total cases Count : ${responseJson.cases}"
                     todayCases.text = "Today's cases Count : ${responseJson.todayCases}"
                     totalDeath.text = "Total Death Count : ${responseJson.deaths}"
