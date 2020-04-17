@@ -7,9 +7,9 @@ import retrofit2.http.GET
 import retrofit2.http.Path
 
 interface ApiService {
-    @GET("/countries/{country}")
+    @GET("v2/countries/{country}")
     fun fetchAllDetails(@Path("country")countryName:String) : Call<Coviddata>
 
-    @GET("countries?sort=cases")
+    @GET("v2/countries?sort=cases")
     fun fetchAllCountries():Call<all_countries>
 }
