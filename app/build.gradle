@@ -10,7 +10,9 @@ android {
         targetCompatibility = 8
         sourceCompatibility = 8
     }
-
+    lintOptions {
+        abortOnError false
+    }
     defaultConfig {
         applicationId "com.dynamicdudes.covid_19"
         minSdkVersion 15
